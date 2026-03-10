@@ -136,6 +136,13 @@ All entities are stored as JSON files in the `data/` directory, linked by ID ref
 - `Agentic_Sales_Systems_Simplified_Illustrations_v3.md` — System architecture, workflow diagrams, and worked examples
 - `Functional_Requirements_for_Individual_AI_Agents_in_the_Agentic_Sales_System_v3.md` — Detailed functional requirements for all 26 agents
 
+## Learn More
+
+The Lean Sales Method is a comprehensive B2B sales management system developed by Tapio Nissilä. To learn more about the methodology, the agentic sales architecture, and how to apply Lean principles to your sales organization:
+
+- **Website**: [leansales.fi](https://leansales.fi) — methodology overview, resources, and latest updates
+- **Book**: [*Lean Sales Method — End to End Sales Management System*](https://www.amazon.com) — available on Amazon.com
+
 ## License
 
-Proprietary. Based on the book *Lean Sales Method — End to End Sales Management System*.
+Proprietary. Based on the book *Lean Sales Method — End to End Sales Management System* by Tapio Nissilä.
