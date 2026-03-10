@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTM Play",
+  "description": "A Go-To-Market Play combining strategy, ICP, buyer personas, and JTBD",
+  "type": "object",
+  "required": ["id", "name", "strategy", "status", "icp_id", "created_at"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^play-[a-z0-9-]+$",
+      "description": "Unique play identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable play name"
+    },
+    "strategy": {
+      "enum": ["expand", "acquire", "enter"],
+      "description": "GTM motion type: expand existing customers, acquire new customers, or enter new markets"
+    },
+    "status": {
+      "enum": ["draft", "active", "paused", "retired"],
+      "description": "Current lifecycle status"
+    },
+    "icp_id": {
+      "type": "string",
+      "description": "Reference to the ICP this play targets"
+    },
+    "market_context": {
+      "type": "object",
+      "properties": {
+        "geography": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Target geographic markets"
+        },
+        "industry_vertical": {
+          "type": "string",
+          "description": "Primary industry vertical"
+        },
+        "market_maturity": {
+          "enum": ["emerging", "growing", "mature", "declining"],
+          "description": "Stage of market lifecycle"
+        },
+        "competitive_landscape_summary": {
+          "type": "string",
+          "description": "Brief overview of competitive situation"
+        }
+      }
+    },
+    "success_metrics": {
+      "type": "object",
+      "properties": {
+        "target_opportunities_per_quarter": {
+          "type": "number",
+          "description": "Target number of qualified opportunities per quarter"
+        },
+        "target_win_rate": {
+          "type": "number",
+          "description": "Target win rate as decimal (e.g., 0.35)"
+        },
+        "target_deal_size_eur": {
+          "type": "number",
+          "description": "Target average deal size in EUR"
+        },
+        "target_cycle_days": {
+          "type": "number",
+          "description": "Target sales cycle length in days"
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form notes about the play"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

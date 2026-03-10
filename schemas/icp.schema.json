@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ideal Customer Profile",
+  "description": "Structured company-level targeting profile",
+  "type": "object",
+  "required": ["id", "name", "firmographics"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^icp-[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable ICP name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of this ICP"
+    },
+    "firmographics": {
+      "type": "object",
+      "required": ["industry"],
+      "properties": {
+        "industry": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Target industries"
+        },
+        "employee_count_min": { "type": "number" },
+        "employee_count_max": { "type": "number" },
+        "revenue_eur_min": { "type": "number" },
+        "revenue_eur_max": { "type": "number" },
+        "geography": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Target geographies"
+        },
+        "company_type": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "e.g., private, public, PE-backed, family-owned"
+        }
+      }
+    },
+    "technographics": {
+      "type": "object",
+      "properties": {
+        "tech_stack": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Relevant technologies in use"
+        },
+        "digital_maturity": {
+          "enum": ["low", "medium", "high"],
+          "description": "Overall digital maturity level"
+        },
+        "key_systems": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Key business systems (ERP, CRM, etc.)"
+        }
+      }
+    },
+    "behavioral_signals": {
+      "type": "object",
+      "properties": {
+        "buying_triggers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Events that trigger buying activity"
+        },
+        "disqualifiers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Criteria that disqualify a prospect"
+        },
+        "buying_process_typical_length_days": {
+          "type": "number",
+          "description": "Typical buying cycle length in days"
+        }
+      }
+    },
+    "segment_priority": {
+      "enum": ["primary", "secondary", "experimental"],
+      "description": "Strategic priority level"
+    },
+    "persona_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Linked buyer persona IDs"
+    },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

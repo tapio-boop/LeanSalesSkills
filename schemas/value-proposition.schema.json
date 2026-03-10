@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Value Proposition",
+  "description": "Tailored messaging for a specific Buyer Persona x JTBD combination",
+  "type": "object",
+  "required": ["id", "persona_id", "jtbd_id", "headline"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^vp-[a-z0-9-]+$"
+    },
+    "persona_id": {
+      "type": "string",
+      "description": "Reference to Buyer Persona"
+    },
+    "jtbd_id": {
+      "type": "string",
+      "description": "Reference to JTBD"
+    },
+    "headline": {
+      "type": "string",
+      "description": "One-line value proposition headline"
+    },
+    "subheadline": {
+      "type": "string",
+      "description": "Supporting statement that elaborates the headline"
+    },
+    "core_message": {
+      "type": "string",
+      "description": "2-3 sentence core value message"
+    },
+    "key_benefits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["benefit"],
+        "properties": {
+          "benefit": { "type": "string" },
+          "proof_point": { "type": "string", "description": "Evidence or customer example" },
+          "quantification": { "type": "string", "description": "Measurable impact" }
+        }
+      },
+      "description": "Top 3-5 benefits with proof"
+    },
+    "differentiation": {
+      "type": "object",
+      "properties": {
+        "vs_status_quo": {
+          "type": "string",
+          "description": "Why change from current approach"
+        },
+        "vs_competitors": {
+          "type": "string",
+          "description": "Why choose us over alternatives"
+        },
+        "unique_mechanism": {
+          "type": "string",
+          "description": "What makes our approach uniquely effective"
+        }
+      }
+    },
+    "objection_responses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["objection", "response"],
+        "properties": {
+          "objection": { "type": "string" },
+          "response": { "type": "string" }
+        }
+      }
+    },
+    "elevator_pitch_30s": {
+      "type": "string",
+      "description": "30-second elevator pitch"
+    },
+    "elevator_pitch_60s": {
+      "type": "string",
+      "description": "60-second elevator pitch"
+    },
+    "email_hook": {
+      "type": "string",
+      "description": "Opening hook for outreach emails"
+    },
+    "status": {
+      "enum": ["draft", "testing", "validated", "retired"],
+      "description": "Lifecycle status of this value proposition"
+    },
+    "performance_data": {
+      "type": "object",
+      "properties": {
+        "response_rate": { "type": "number" },
+        "meeting_conversion_rate": { "type": "number" },
+        "last_tested": { "type": "string", "format": "date" }
+      }
+    },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

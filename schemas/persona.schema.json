@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Buyer Persona",
+  "description": "Role-level profile of a decision-maker within an ICP",
+  "type": "object",
+  "required": ["id", "name", "icp_id", "role_title"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^persona-[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Descriptive persona name (e.g., 'The Digital Transformation CTO')"
+    },
+    "icp_id": {
+      "type": "string",
+      "description": "Reference to parent ICP"
+    },
+    "role_title": {
+      "type": "string",
+      "description": "Typical job title (e.g., 'VP of Operations')"
+    },
+    "department": {
+      "type": "string",
+      "description": "Department or function"
+    },
+    "seniority_level": {
+      "enum": ["c-level", "vp", "director", "manager", "individual-contributor"]
+    },
+    "dmu_role": {
+      "enum": ["economic-buyer", "technical-evaluator", "user-buyer", "coach", "blocker", "influencer"],
+      "description": "Role in the Decision Making Unit"
+    },
+    "pain_points": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Key problems and frustrations"
+    },
+    "motivations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What drives their decisions and priorities"
+    },
+    "success_metrics": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "KPIs they are measured on"
+    },
+    "objections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Common objections or concerns"
+    },
+    "communication_preferences": {
+      "type": "object",
+      "properties": {
+        "preferred_channels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "e.g., email, LinkedIn, phone, in-person"
+        },
+        "content_format": {
+          "enum": ["executive-summary", "detailed-analysis", "visual", "data-driven"],
+          "description": "Preferred content style"
+        },
+        "tone": {
+          "enum": ["strategic", "technical", "practical", "financial"],
+          "description": "Preferred communication tone"
+        },
+        "meeting_preference": {
+          "enum": ["brief", "standard", "deep-dive"],
+          "description": "Preferred meeting length"
+        }
+      }
+    },
+    "information_sources": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Where they get industry information"
+    },
+    "jtbd_id": {
+      "type": "string",
+      "description": "Reference to linked JTBD"
+    },
+    "value_proposition_id": {
+      "type": "string",
+      "description": "Reference to linked Value Proposition"
+    },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Jobs-To-Be-Done",
+  "description": "The job a buyer persona hires a solution to do",
+  "type": "object",
+  "required": ["id", "persona_id", "job_statement"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^jtbd-[a-z0-9-]+$"
+    },
+    "persona_id": {
+      "type": "string",
+      "description": "Reference to parent Buyer Persona"
+    },
+    "job_statement": {
+      "type": "string",
+      "description": "Core job statement: 'When [situation], I want to [motivation], so I can [expected outcome]'"
+    },
+    "functional_job": {
+      "type": "string",
+      "description": "The practical task they need to accomplish"
+    },
+    "emotional_job": {
+      "type": "string",
+      "description": "How they want to feel (e.g., confident, in control, innovative)"
+    },
+    "social_job": {
+      "type": "string",
+      "description": "How they want to be perceived by others"
+    },
+    "current_solution": {
+      "type": "string",
+      "description": "How they currently get this job done"
+    },
+    "desired_outcome": {
+      "type": "string",
+      "description": "The ideal end state"
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Limitations that affect how they can get the job done"
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "How they measure whether the job is done well"
+    },
+    "underserved_outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["outcome", "importance", "current_satisfaction"],
+        "properties": {
+          "outcome": { "type": "string" },
+          "importance": { "enum": ["critical", "high", "medium", "low"] },
+          "current_satisfaction": { "enum": ["unmet", "underserved", "adequately-served", "overserved"] }
+        }
+      },
+      "description": "Outcomes where current solutions fall short — your opportunity"
+    },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}
