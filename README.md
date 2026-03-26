@@ -1,33 +1,30 @@
 # Lean Sales Skills
 
-A set of [Claude Code](https://claude.com/claude-code) Skills implementing the **Lean Sales Method** — an end-to-end sales management system based on systems thinking and Lean principles.
+Claude Code Skills for B2B sales development, built on the **Lean Sales methodology**.
 
-## What is the Lean Sales Method?
+## Why Lean Thinking in Sales?
 
-The Lean Sales Method applies Lean principles to B2B sales management:
+Most B2B sales organizations suffer from the same problems: reps chase wrong-fit prospects, pipelines are unpredictable, and activity is confused with progress. The root cause is the same one Lean manufacturing solved decades ago — **waste**.
 
-- **Flow efficiency** — minimize wait time, maximize value-adding activity
-- **Waste elimination** — stop pursuing poor-fit prospects, generic outreach, and redundant meetings
-- **Pull-based flow** — only pull new opportunities when capacity exists
-- **Constraint management** — identify and optimize the bottleneck
-- **Continuous improvement** — systematic learning loops across the sales process
+Lean Sales applies proven Lean principles to B2B sales:
 
-The method is built on a **26-agent architecture** across three layers:
+| Lean Principle | What It Means in Sales |
+|---|---|
+| **Eliminate waste** | Stop pursuing prospects who will never buy. Stop writing generic outreach. Stop holding meetings without clear next steps. |
+| **Flow efficiency** | Measure how much of the sales cycle is value-adding vs. waiting. Most B2B deals spend 80%+ of their lifecycle waiting — for internal approvals, for follow-ups, for decisions. |
+| **Pull, don't push** | Only pull new opportunities into the pipeline when you have capacity to work them properly. Overloaded pipelines kill conversion rates. |
+| **Find the constraint** | Every sales organization has one bottleneck that limits throughput. Find it, fix it, then find the next one. |
+| **Continuous improvement** | Systematic win/loss reviews, not anecdotal war stories. Every closed deal teaches something — capture it. |
 
-| Layer | Agents | Purpose |
-|-------|--------|---------|
-| **Strategy** | 6 | Define WHO to target, WHAT to offer, HOW to position |
-| **Management** | 5 | Optimize flow, quality, and performance |
-| **Execution** | 15 | Execute the sales process end-to-end |
+The result: **more revenue from fewer, better-qualified opportunities** — with less wasted effort across the team.
 
-These agents are organized into two core systems:
+## What This Repo Does
 
-1. **Opportunity Generation Engine** — transforms strategy into qualified opportunities
-2. **Opportunity Pursuit System** — converts qualified opportunities into closed deals
+This repo provides a set of Claude Code Skills that operationalize Lean Sales as an interactive AI-assisted workflow. You define your go-to-market strategy, and the skills help you build, validate, and execute it step by step.
 
-## The GTM Play — Core Concept
+### Core Concept: The GTM Play
 
-A **GTM Play** is the foundational unit of execution. It binds together:
+A **GTM Play** is the foundational unit of execution. It binds together your target market, buyer personas, their jobs-to-be-done, and your value propositions into a coherent, executable plan.
 
 ```
 GTM Play
@@ -44,55 +41,28 @@ GTM Play
 └── Success Metrics
 ```
 
-| Concept | What It Defines |
-|---------|----------------|
-| **ICP** | Company-level targeting — firmographics, technographics, behavioral signals |
-| **Buyer Persona** | Individual-level engagement — role, pain points, motivations, DMU role |
-| **JTBD** | The job the buyer hires a solution to do — functional, emotional, social dimensions |
-| **Value Proposition** | Tailored messaging per persona — benefits, proof points, differentiation |
+### Skills
 
-## Three Workflows
+**Play Creation:**
+- `/create-gtm-play` — Full orchestrator: strategy, ICP, personas, JTBD, and value props
+- `/create-icp` — Define an Ideal Customer Profile
+- `/create-persona` — Create a Buyer Persona linked to an ICP
+- `/create-jtbd` — Define Jobs-To-Be-Done for a persona
+- `/create-value-prop` — Craft a Value Proposition for a persona + JTBD
 
-| Workflow | Target | When to Use |
-|----------|--------|-------------|
-| **Expand** | Existing customers | Account growth, upsell/cross-sell, whitespace analysis |
-| **Acquire** | New customers in known markets | Competitive displacement, outreach sequences |
-| **Enter** | New markets | Beachhead strategy, hypothesis validation, lighthouse accounts |
+**Play Management:**
+- `/list-plays` — Overview of all GTM Plays
+- `/show-play` — Full view of a play with all linked entities
+- `/validate-play` — Structural, completeness, and quality validation
 
-## Skills
+**Workflow Execution:**
+- `/expand-play` — Guidance for growing existing accounts
+- `/acquire-play` — Guidance for winning new customers
+- `/enter-play` — Guidance for entering new markets
 
-### Play Creation
-
-| Skill | Description |
-|-------|-------------|
-| `/create-gtm-play` | Full orchestrator — walks through strategy, ICP, personas, JTBD, and value props |
-| `/create-icp` | Define an Ideal Customer Profile |
-| `/create-persona` | Create a Buyer Persona linked to an ICP |
-| `/create-jtbd` | Define a Jobs-To-Be-Done for a persona |
-| `/create-value-prop` | Craft a Value Proposition for a persona + JTBD |
-
-### Play Management
-
-| Skill | Description |
-|-------|-------------|
-| `/list-plays` | Overview of all GTM Plays |
-| `/show-play` | Full view of a play with all linked entities |
-| `/validate-play` | Structural, completeness, and quality validation |
-
-### Workflow Execution
-
-| Skill | Description |
-|-------|-------------|
-| `/expand-play` | Generate Expand workflow guidance for existing customer growth |
-| `/acquire-play` | Generate Acquire workflow guidance for new customer acquisition |
-| `/enter-play` | Generate Enter workflow guidance for new market penetration |
-
-### Background Knowledge (auto-loaded by Claude)
-
-| Skill | Triggers When |
-|-------|---------------|
-| `lean-sales-method` | Discussing sales methodology, pipeline, Lean principles |
-| `gtm-play-design` | Discussing GTM plays, data model, entity relationships |
+### Background Knowledge (auto-loaded)
+- `lean-sales-method` — Triggers when discussing sales methodology or Lean principles
+- `gtm-play-design` — Triggers when discussing GTM plays or data model
 
 ## Getting Started
 
@@ -100,49 +70,23 @@ GTM Play
 2. Run `/create-gtm-play` to build your first play end-to-end
 3. Or build bottom-up: `/create-icp` → `/create-persona` → `/create-jtbd` → `/create-value-prop`
 4. Validate with `/validate-play`
-5. Generate execution guidance with `/expand-play`, `/acquire-play`, or `/enter-play`
+5. Execute with `/expand-play`, `/acquire-play`, or `/enter-play`
 
-## Project Structure
+## 26-Agent Architecture
 
-```
-LeanSalesSkills/
-├── .claude/skills/          # Claude Code Skills (13 skills)
-├── schemas/                 # JSON Schema definitions
-│   ├── gtm-play.schema.json
-│   ├── icp.schema.json
-│   ├── persona.schema.json
-│   ├── jtbd.schema.json
-│   └── value-proposition.schema.json
-├── data/                    # Runtime data (created by skills)
-│   ├── gtm-plays/
-│   ├── icps/
-│   ├── personas/
-│   ├── jtbd/
-│   └── value-propositions/
-├── CLAUDE.md                # Project instructions for Claude
-└── *.md                     # Reference documentation
-```
+The skills are built on a 26-agent architecture across three layers:
 
-## Data Model
-
-All entities are stored as JSON files in the `data/` directory, linked by ID references:
-
-- **IDs** use type-prefix + slug: `play-nordic-manufacturing`, `icp-midmarket-saas`, `persona-cto-digital`, `jtbd-vendor-assessment`, `vp-cto-automation`
-- **Schemas** in `schemas/` define the structure and validation rules
-- **Cross-references** are bidirectional (e.g., ICP lists persona IDs, personas reference back to ICP)
-
-## Reference Documents
-
-- `Agentic_Sales_Systems_Simplified_Illustrations_v3.md` — System architecture, workflow diagrams, and worked examples
-- `Functional_Requirements_for_Individual_AI_Agents_in_the_Agentic_Sales_System_v3.md` — Detailed functional requirements for all 26 agents
+| Layer | Agents | Purpose |
+|-------|--------|---------|
+| **Strategy** | 6 | Define WHO to target, WHAT to offer, HOW to position |
+| **Management** | 5 | Optimize flow, quality, and performance |
+| **Execution** | 15 | Execute the sales process end-to-end |
 
 ## Learn More
 
-The Lean Sales Method is a comprehensive B2B sales management system developed by Tapio Nissilä. To learn more about the methodology, the agentic sales architecture, and how to apply Lean principles to your sales organization:
-
-- **Website**: [leansales.fi](https://leansales.fi) — methodology overview, resources, and latest updates
-- **Book**: [*Lean Sales Method — End to End Sales Management System*](https://www.amazon.com) — available on Amazon.com
+- **Website**: [leansales.fi](https://leansales.fi)
+- **Book**: *Lean Sales — More Sales with Less Selling* by Tapio Nissilä (2013), available on [Amazon](https://www.amazon.com)
 
 ## License
 
-Proprietary. Based on the book *Lean Sales Method — End to End Sales Management System* by Tapio Nissilä.
+Proprietary. Based on the Lean Sales methodology by Tapio Nissilä.
